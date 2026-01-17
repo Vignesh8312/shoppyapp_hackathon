@@ -15,17 +15,13 @@ pipeline {
     stages {
         stage('Cleanup Workspace') {
             steps {
-                script {
-                    cleanWs()
-                }
+                cleanupWorkspace()
             }
         }
         
         stage('Clone Repository') {
             steps {
-                script {
-                    clone("https://github.com/Vignesh8312/tws-e-commerce-app_hackathon.git","master")
-                }
+                checkoutRepo()
             }
         }
         
