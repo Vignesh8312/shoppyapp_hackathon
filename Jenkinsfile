@@ -58,7 +58,12 @@ pipeline {
 
         stage('Security Scan with Trivy') {
             steps {
-                trivyScan()
+                trivyScan(
+                    imageName: env.DOCKER_IMAGE_NAME,
+                    imageTag: env.DOCKER_IMAGE_TAG,
+                    severity: 'HIGH,CRITICAL',
+                    threshold: 100
+                )
             }
         }
 
